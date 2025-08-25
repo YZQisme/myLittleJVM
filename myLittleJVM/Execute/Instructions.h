@@ -1,0 +1,439 @@
+//
+// Created by YZQ on 25-8-5.
+//
+
+#ifndef INSTRUCTIONS_H
+#define INSTRUCTIONS_H
+#include "Executor.h"
+
+/*Constants
+ 00 (0x00)    nop
+ 01 (0x01)    aconst_null
+ 02 (0x02)    iconst_m1
+ 03 (0x03)    iconst_0
+ 04 (0x04)    iconst_1
+ 05 (0x05)    iconst_2
+ 06 (0x06)    iconst_3
+ 07 (0x07)    iconst_4
+ 08 (0x08)    iconst_5
+ 09 (0x09)    lconst_0
+ 10 (0x0a)    lconst_1
+ 11 (0x0b)    fconst_0
+ 12 (0x0c)    fconst_1
+ 13 (0x0d)    fconst_2
+ 14 (0x0e)    dconst_0
+ 15 (0x0f)    dconst_1
+ 16 (0x10)    bipush
+ 17 (0x11)    sipush
+ //18 (0x12)    ldc
+ //19 (0x13)    ldc_w
+ //20 (0x14)    ldc2_w*/
+int I_nop(Execute* execute);
+int I_aconst_null(Execute* execute);
+int I_iconst_m1(Execute* execute);
+int I_iconst_0(Execute* execute);
+int I_iconst_1(Execute* execute);
+int I_iconst_2(Execute* execute);
+int I_iconst_3(Execute* execute);
+int I_iconst_4(Execute* execute);
+int I_iconst_5(Execute* execute);
+int I_lconst_0(Execute* execute);
+int I_lconst_1(Execute* execute);
+int I_fconst_0(Execute* execute);
+int I_fconst_1(Execute* execute);
+int I_fconst_2(Execute* execute);
+int I_dconst_0(Execute* execute);
+int I_dconst_1(Execute* execute);
+int I_bipush(Execute* execute);
+int I_sipush(Execute* execute);
+int I_ldc(Execute* execute);
+int I_ldc_w(Execute* execute);
+int I_ldc2_w(Execute* execute);
+
+/*load
+ 21 (0x15)    iload
+ 22 (0x16)    lload
+ 23 (0x17)    fload
+ 24 (0x18)    dload
+ 25 (0x19)    aload
+ 26 (0x1a)    iload_0
+ 27 (0x1b)    iload_1
+ 28 (0x1c)    iload_2
+ 29 (0x1d)    iload_3
+ 30 (0x1e)    lload_0
+ 31 (0x1f)    lload_1
+ 32 (0x20)    lload_2
+ 33 (0x21)    lload_3
+ 34 (0x22)    fload_0
+ 35 (0x23)    fload_1
+ 36 (0x24)    fload_2
+ 37 (0x25)    fload_3
+ 38 (0x26)    dload_0
+ 39 (0x27)    dload_1
+ 40 (0x28)    dload_2
+ 41 (0x29)    dload_3
+ 42 (0x2a)    aload_0
+ 43 (0x2b)    aload_1
+ 44 (0x2c)    aload_2
+ 45 (0x2d)    aload_3
+ 46 (0x2e)    iaload
+ 47 (0x2f)    laload
+ 48 (0x30)    faload
+ 49 (0x31)    daload
+ 50 (0x32)    aaload
+ 51 (0x33)    baload
+ 52 (0x34)    caload
+ 53 (0x35)    saload*/
+int I_iload(Execute* execute);
+int I_lload(Execute* execute);
+int I_fload(Execute* execute);
+int I_dload(Execute* execute);
+int I_aload(Execute* execute);
+int I_iload_0(Execute* execute);
+int I_iload_1(Execute* execute);
+int I_iload_2(Execute* execute);
+int I_iload_3(Execute* execute);
+int I_lload_0(Execute* execute);
+int I_lload_1(Execute* execute);
+int I_lload_2(Execute* execute);
+int I_lload_3(Execute* execute);
+int I_fload_0(Execute* execute);
+int I_fload_1(Execute* execute);
+int I_fload_2(Execute* execute);
+int I_fload_3(Execute* execute);
+int I_dload_0(Execute* execute);
+int I_dload_1(Execute* execute);
+int I_dload_2(Execute* execute);
+int I_dload_3(Execute* execute);
+int I_aload_0(Execute* execute);
+int I_aload_1(Execute* execute);
+int I_aload_2(Execute* execute);
+int I_aload_3(Execute* execute);
+int I_iaload(Execute* execute);
+int I_laload(Execute* execute);
+int I_faload(Execute* execute);
+int I_daload(Execute* execute);
+int I_aaload(Execute* execute);
+int I_baload(Execute* execute);
+int I_caload(Execute* execute);
+int I_saload(Execute* execute);
+
+/*store
+ 54 (0x36)    istore
+ 55 (0x37)    lstore
+ 56 (0x38)    fstore
+ 57 (0x39)    dstore
+ 58 (0x3a)    astore
+ 59 (0x3b)    istore_0
+ 60 (0x3c)    istore_1
+ 61 (0x3d)    istore_2
+ 62 (0x3e)    istore_3
+ 63 (0x3f)    lstore_0
+ 64 (0x40)    lstore_1
+ 65 (0x41)    lstore_2
+ 66 (0x42)    lstore_3
+ 67 (0x43)    fstore_0
+ 68 (0x44)    fstore_1
+ 69 (0x45)    fstore_2
+ 70 (0x46)    fstore_3
+ 71 (0x47)    dstore_0
+ 72 (0x48)    dstore_1
+ 73 (0x49)    dstore_2
+ 74 (0x4a)    dstore_3
+ 75 (0x4b)    astore_0
+ 76 (0x4c)    astore_1
+ 77 (0x4d)    astore_2
+ 78 (0x4e)    astore_3
+ 79 (0x4f)    iastore
+ 80 (0x50)    lastore
+ 81 (0x51)    fastore
+ 82 (0x52)    dastore
+ 83 (0x53)    aastore
+ 84 (0x54)    bastore
+ 85 (0x55)    castore
+ 86 (0x56)    sastore*/
+int I_istore(Execute* execute);
+int I_lstore(Execute* execute);
+int I_fstore(Execute* execute);
+int I_dstore(Execute* execute);
+int I_astore(Execute* execute);
+int I_istore_0(Execute* execute);
+int I_istore_1(Execute* execute);
+int I_istore_2(Execute* execute);
+int I_istore_3(Execute* execute);
+int I_lstore_0(Execute* execute);
+int I_lstore_1(Execute* execute);
+int I_lstore_2(Execute* execute);
+int I_lstore_3(Execute* execute);
+int I_fstore_0(Execute* execute);
+int I_fstore_1(Execute* execute);
+int I_fstore_2(Execute* execute);
+int I_fstore_3(Execute* execute);
+int I_dstore_0(Execute* execute);
+int I_dstore_1(Execute* execute);
+int I_dstore_2(Execute* execute);
+int I_dstore_3(Execute* execute);
+int I_astore_0(Execute* execute);
+int I_astore_1(Execute* execute);
+int I_astore_2(Execute* execute);
+int I_astore_3(Execute* execute);
+int I_iastore(Execute* execute);
+int I_lastore(Execute* execute);
+int I_fastore(Execute* execute);
+int I_dastore(Execute* execute);
+int I_aastore(Execute* execute);
+int I_bastore(Execute* execute);
+int I_castore(Execute* execute);
+int I_sastore(Execute* execute);
+
+/*Stack
+ 87 (0x57)    pop
+ 88 (0x58)    pop2
+ 89 (0x59)    dup
+ 90 (0x5a)    dup_x1
+ 91 (0x5b)    dup_x2
+ 92 (0x5c)    dup2
+ 93 (0x5d)    dup2_x1
+ 94 (0x5e)    dup2_x2
+ 95 (0x5f)    swap
+ Math
+ 96 (0x60)    iadd
+ 97 (0x61)    ladd
+ 98 (0x62)    fadd
+ 99 (0x63)    dadd
+ 100 (0x64)    isub
+ 101 (0x65)    lsub
+ 102 (0x66)    fsub
+ 103 (0x67)    dsub
+ 104 (0x68)    imul
+ 105 (0x69)    lmul
+ 106 (0x6a)    fmul
+ 107 (0x6b)    dmul
+ 108 (0x6c)    idiv
+ 109 (0x6d)    ldiv
+ 110 (0x6e)    fdiv
+ 111 (0x6f)    ddiv
+ 112 (0x70)    irem
+ 113 (0x71)    lrem
+ 114 (0x72)    frem
+ 115 (0x73)    drem
+ 116 (0x74)    ineg
+ 117 (0x75)    lneg
+ 118 (0x76)    fneg
+ 119 (0x77)    dneg
+ 120 (0x78)    ishl
+ 121 (0x79)    lshl
+ 122 (0x7a)    ishr
+ 123 (0x7b)    lshr
+ 124 (0x7c)    iushr
+ 125 (0x7d)    lushr
+ 126 (0x7e)    iand
+ 127 (0x7f)    land
+ 128 (0x80)    ior
+ 129 (0x81)    lor
+ 130 (0x82)    ixor
+ 131 (0x83)    lxor
+ 132 (0x84)    iinc*/
+int I_pop(Execute* execute);
+int I_pop2(Execute* execute);
+int I_dup(Execute* execute);
+int I_dup_x1(Execute* execute);
+int I_dup_x2(Execute* execute);
+int I_dup2(Execute* execute);
+int I_dup2_x1(Execute* execute);
+int I_dup2_x2(Execute* execute);
+int I_swap(Execute* execute);
+int I_iadd(Execute* execute);
+int I_ladd(Execute* execute);
+int I_fadd(Execute* execute);
+int I_dadd(Execute* execute);
+int I_isub(Execute* execute);
+int I_lsub(Execute* execute);
+int I_fsub(Execute* execute);
+int I_dsub(Execute* execute);
+int I_imul(Execute* execute);
+int I_lmul(Execute* execute);
+int I_fmul(Execute* execute);
+int I_dmul(Execute* execute);
+int I_idiv(Execute* execute);
+int I_ldiv(Execute* execute);
+int I_fdiv(Execute* execute);
+int I_ddiv(Execute* execute);
+int I_irem(Execute* execute);
+int I_lrem(Execute* execute);
+int I_frem(Execute* execute);
+int I_drem(Execute* execute);
+int I_ineg(Execute* execute);
+int I_lneg(Execute* execute);
+int I_fneg(Execute* execute);
+int I_dneg(Execute* execute);
+int I_ishl(Execute* execute);
+int I_lshl(Execute* execute);
+int I_ishr(Execute* execute);
+int I_lshr(Execute* execute);
+int I_iushr(Execute* execute);
+int I_lushr(Execute* execute);
+int I_iand(Execute* execute);
+int I_land(Execute* execute);
+int I_ior(Execute* execute);
+int I_lor(Execute* execute);
+int I_ixor(Execute* execute);
+int I_lxor(Execute* execute);
+int I_iinc(Execute* execute);
+
+/*Conversions
+ 133 (0x85)    i2l
+ 134 (0x86)    i2f
+ 135 (0x87)    i2d
+ 136 (0x88)    l2i
+ 137 (0x89)    l2f
+ 138 (0x8a)    l2d
+ 139 (0x8b)    f2i
+ 140 (0x8c)    f2l
+ 141 (0x8d)    f2d
+ 142 (0x8e)    d2i
+ 143 (0x8f)    d2l
+ 144 (0x90)    d2f
+ 145 (0x91)    i2b
+ 146 (0x92)    i2c
+ 147 (0x93)    i2s
+Comparisons
+ 148 (0x94)    lcmp
+ 149 (0x95)    fcmpl
+ 150 (0x96)    fcmpg
+ 151 (0x97)    dcmpl
+ 152 (0x98)    dcmpg
+ 153 (0x99)    ifeq
+ 154 (0x9a)    ifne
+ 155 (0x9b)    iflt
+ 156 (0x9c)    ifge
+ 157 (0x9d)    ifgt
+ 158 (0x9e)    ifle
+ 159 (0x9f)    if_icmpeq
+ 160 (0xa0)    if_icmpne
+ 161 (0xa1)    if_icmplt
+ 162 (0xa2)    if_icmpge
+ 163 (0xa3)    if_icmpgt
+ 164 (0xa4)    if_icmple
+ 165 (0xa5)    if_acmpeq
+ 166 (0xa6)    if_acmpne*/
+int I_i2l(Execute* execute);
+int I_i2f(Execute* execute);
+int I_i2d(Execute* execute);
+int I_l2i(Execute* execute);
+int I_l2f(Execute* execute);
+int I_l2d(Execute* execute);
+int I_f2i(Execute* execute);
+int I_f2l(Execute* execute);
+int I_f2d(Execute* execute);
+int I_d2i(Execute* execute);
+int I_d2l(Execute* execute);
+int I_d2f(Execute* execute);
+int I_i2b(Execute* execute);
+int I_i2c(Execute* execute);
+int I_i2s(Execute* execute);
+int I_lcmp(Execute* execute);
+int I_fcmpl(Execute* execute);
+int I_fcmpg(Execute* execute);
+int I_dcmpl(Execute* execute);
+int I_dcmpg(Execute* execute);
+int I_ifeq(Execute* execute);
+int I_ifne(Execute* execute);
+int I_iflt(Execute* execute);
+int I_ifge(Execute* execute);
+int I_ifgt(Execute* execute);
+int I_ifle(Execute* execute);
+int I_if_icmpeq(Execute* execute);
+int I_if_icmpne(Execute* execute);
+int I_if_icmplt(Execute* execute);
+int I_if_icmpge(Execute* execute);
+int I_if_icmpgt(Execute* execute);
+int I_if_icmple(Execute* execute);
+int I_if_acmpeq(Execute* execute);
+int I_if_acmpne(Execute* execute);
+
+/*Control
+ 167 (0xa7)    goto
+ 168 (0xa8)    jsr
+ 169 (0xa9)    ret
+ 170 (0xaa)    tableswitch
+ 171 (0xab)    lookupswitch
+ 172 (0xac)    ireturn
+ 173 (0xad)    lreturn
+ 174 (0xae)    freturn
+ 175 (0xaf)    dreturn
+ 176 (0xb0)    areturn
+ 177 (0xb1)    return*/
+int I_goto(Execute* execute);
+int I_jsr(Execute* execute);
+int I_ret(Execute* execute);
+int I_tableswitch(Execute* execute);
+int I_lookupswitch(Execute* execute);
+int I_ireturn(Execute* execute);
+int I_lreturn(Execute* execute);
+int I_freturn(Execute* execute);
+int I_dreturn(Execute* execute);
+int I_areturn(Execute* execute);
+int I_return(Execute* execute);
+
+/*References
+ 178 (0xb2)    getstatic
+ 179 (0xb3)    putstatic
+ 180 (0xb4)    getfield
+ 181 (0xb5)    putfield
+ 182 (0xb6)    invokevirtual
+ 183 (0xb7)    invokespecial
+ 184 (0xb8)    invokestatic
+ 185 (0xb9)    invokeinterface
+ 186 (0xba)    invokedynamic
+ 187 (0xbb)    new
+ 188 (0xbc)    newarray
+ 189 (0xbd)    anewarray
+ 190 (0xbe)    arraylength
+ 191 (0xbf)    athrow
+ 192 (0xc0)    checkcast
+ 193 (0xc1)    instanceof
+ 194 (0xc2)    monitorenter
+ 195 (0xc3)    monitorexit
+ Extended
+ 196 (0xc4)    wide
+ 197 (0xc5)    multianewarray
+ 198 (0xc6)    ifnull
+ 199 (0xc7)    ifnonnull
+ 200 (0xc8)    goto_w
+ 201 (0xc9)    jsr_w
+ Reserved
+ 202 (0xca)    breakpoint
+ 254 (0xfe)    impdep1
+ 255 (0xff)    impdep2*/
+int I_getstatic(Execute* execute);
+int I_putstatic(Execute* execute);
+int I_getfield(Execute* execute);
+int I_putfield(Execute* execute);
+int I_invokevirtual(Execute* execute);
+int I_invokespecial(Execute* execute);
+int I_invokestatic(Execute* execute);
+int I_invokeinterface(Execute* execute);
+int I_invokedynamic(Execute* execute);
+int I_new(Execute* execute);
+int I_newarray(Execute* execute);
+int I_anewarray(Execute* execute);
+int I_arraylength(Execute* execute);
+int I_athrow(Execute* execute);
+int I_checkcast(Execute* execute);
+int I_instanceof(Execute* execute);
+int I_monitorenter(Execute* execute);
+int I_monitorexit(Execute* execute);
+int I_wide(Execute* execute);
+int I_multianewarray(Execute* execute);
+int I_ifnull(Execute* execute);
+int I_ifnonnull(Execute* execute);
+int I_goto_w(Execute* execute);
+int I_jsr_w(Execute* execute);
+
+extern int (*InstructionFuncPtrArr[256])(Execute*);
+
+int isSon_Instance(const Kclass* s,const Kclass* f);
+int isSon_Array(const std::string& s,const std::string& f);
+
+#endif //INSTRUCTIONS_H
