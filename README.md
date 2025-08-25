@@ -6,7 +6,7 @@
 
 在总体结构上，myLittleJVM与常见的JVM是大约一致的，如下图。
 
-![myLittleJVM结构](readMePic\architecture.png "myLittleJVM结构")
+<img src="readMePic\architecture.png" alt="myLittleJVM结构" title="myLittleJVM结构"/>
 
 myLittleJVM并没有将程序计数器（PC）单独列出，原因是myLittleJVM将PC放到了JVM栈的每一个栈帧里（如下图），这样做使方法的调用与返回在实现上更加容易。
 
@@ -20,7 +20,7 @@ myLittleJVM并没有将程序计数器（PC）单独列出，原因是myLittleJV
 
 在类加载器中，myLittleJVM没有采用双亲委派模型，而是采用了如下图的加载方式，这虽然会让加载器失去用户自定义的灵活性，但是这样做可以使得加载器的实现比较简单，同时加载速度快。下面加载方式是区分优先级的，这是为了保护核心类不被意外篡改（如无法自定义java.lang.String），这一点和双亲委派模型是一致的。
 
-![类加载方式](readMePic\classload_process.png "类加载方式")
+<img src="readMePic\classload_process.png" alt="类加载方式" title="类加载方式" />
 
 ### 1.4 执行器
 
@@ -111,3 +111,4 @@ myLittleJVM在Windows 11上使用CLion编写，语言版本为 C++ 11，编译�
 项目中javaClassFile存放的是Java的标准类库，userClassFile存放用户的编译好的字节码文件，myLittleJVM从此处获取用户的字节码文件。
 
 myLittleJVM在编写过程中，主要参考了 *The Java Virtual Machine Specification Java SE 8 Edition* 和《自己动手写Java虚拟机》。
+
