@@ -6,7 +6,7 @@
 
 在总体结构上，myLittleJVM与常见的JVM是大约一致的，如下图。
 
-<img src="readMePic\architecture.png" alt="myLittleJVM结构" title="myLittleJVM结构"/>
+<img src="./readMePic/architecture.png" alt="myLittleJVM结构" title="myLittleJVM结构" />
 
 myLittleJVM并没有将程序计数器（PC）单独列出，原因是myLittleJVM将PC放到了JVM栈的每一个栈帧里（如下图），这样做使方法的调用与返回在实现上更加容易。
 
@@ -14,19 +14,19 @@ myLittleJVM并没有将程序计数器（PC）单独列出，原因是myLittleJV
 
 栈帧里的局部变量表和操作数栈和常见JVM相差不大，动态链接指向的是当前方法代码段的起始位置，其他信息里包含了本地方法的标识，用于表示当前方法是否为本地方法。
 
-<img src="readMePic\stack_frame.png" alt="栈帧结构" title="栈帧结构" style="zoom:50%;" />
+<img src="./readMePic/stack_frame.png" alt="栈帧结构" title="栈帧结构" style="zoom:50%;" />
 
 ### 1.3 类加载的流程
 
 在类加载器中，myLittleJVM没有采用双亲委派模型，而是采用了如下图的加载方式，这虽然会让加载器失去用户自定义的灵活性，但是这样做可以使得加载器的实现比较简单，同时加载速度快。下面加载方式是区分优先级的，这是为了保护核心类不被意外篡改（如无法自定义java.lang.String），这一点和双亲委派模型是一致的。
 
-<img src="readMePic\classload_process.png" alt="类加载方式" title="类加载方式" />
+<img src="./readMePic/classload_process.png" alt="类加载方式" title="类加载方式" />
 
 ### 1.4 执行器
 
 执行器实际上对应常见JVM的执行引擎。常见JVM的执行引擎是高度优化的，里面的结构十分复杂。为了实现的简单，myLittleJVM将执行器分为3部分，如下图。
 
-<img src="readMePic\executor.png" alt="执行器" style="zoom:90%;" title="执行器"/>
+<img src="./readMePic/executor.png" alt="执行器" style="zoom:90%;" title="执行器"/>
 
 取值与分派：取出JVM栈顶一帧的指令，调用指令函数集合里面的对应函数完成指令动作。
 
@@ -38,7 +38,7 @@ myLittleJVM并没有将程序计数器（PC）单独列出，原因是myLittleJV
 
 为了使主类的加载更加快速方便，myLittleJVM也像其他JVM一样，在启动时预加载一些重要的基本类，再加载主类并运行其main()方法。myLittleJVM会预先加载Object、Class、String类，流程如下。
 
-<img src="readMePic\baseClassLoad.png" style="zoom:90%;" />
+<img src="./readMePic/baseClassLoad.png" style="zoom:90%;" />
 
 ## 2 支持的功能
 
@@ -58,41 +58,41 @@ Java语言集合框架
 
 快速排序涉及到了Java语言的基本运算、控制结构和过程抽象。在myLittleJVM上执行Sort.class，结果正确，如下图。
 
-![](readMePic\myLittleJVM_fastSort.png)
+![](./readMePic/myLittleJVM_fastSort.png)
 
 ### 3.2 欧拉筛
 
 欧拉筛涉及到了Java语言的基本运算和控制结构。在myLittleJVM上执行EulerSieve.class，结果正确，如下图。
 
-![](readMePic\myLittleJVM_EulerSieve.png)
+![](./readMePic/myLittleJVM_EulerSieve.png)
 
 ### 3.3 Zoo
 
 Zoo模拟了人、猫和狗吃东西，人讲一门语言的简单情景。Zoo情景的UML图如下。
 
-![](readMePic\Zoo.png)
+![](./readMePic/Zoo.png)
 
 Zoo情景涉及到了Java语言的面向对象特性，在myLittleJVM上执行Zoo.class，如下图。
 
-![](readMePic\myLittleJVM_Zoo.png)
+![](./readMePic/myLittleJVM_Zoo.png)
 
 为了验证myLittleJVM的执行正确性，在Java8的HotSpotVM上执行Zoo.class，如下图。myLittleJVM正确执行Zoo.class。
 
-<img src="readMePic\HotSpotVM_Zoo.png" style="zoom:66%;" />
+<img src="./readMePic/HotSpotVM_Zoo.png" style="zoom:66%;" />
 
 ### 3.4 最短路径
 
 编写一个堆优化的迪杰斯特拉最短路径算法，得到最短路径并打印沿途的权重。该算法涉及到了Java语言集合框架。输入的图如下。
 
-<img src="readMePic\graph.png" style="zoom:50%;" />
+<img src="./readMePic/graph.png" style="zoom:50%;" />
 
 在myLittleJVM上执行CollectionTest.class，如下图。
 
-![](readMePic\myLittleJVM_graph.png)
+![](./readMePic/myLittleJVM_graph.png)
 
 为了验证myLittleJVM的执行正确性，在Java8的HotSpotVM上执行CollectionTest.class，如下图。myLittleJVM正确执行CollectionTest.class。
 
-![](readMePic\HotSpotVM_graph.png)
+![](./readMePic/HotSpotVM_graph.png)
 
 ## 4 改进方向
 
@@ -111,4 +111,5 @@ myLittleJVM在Windows 11上使用CLion编写，语言版本为 C++ 11，编译�
 项目中javaClassFile存放的是Java的标准类库，userClassFile存放用户的编译好的字节码文件，myLittleJVM从此处获取用户的字节码文件。
 
 myLittleJVM在编写过程中，主要参考了 *The Java Virtual Machine Specification Java SE 8 Edition* 和《自己动手写Java虚拟机》。
+
 
